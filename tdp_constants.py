@@ -50,8 +50,8 @@ PRESETS = {
 PRESET_HELP = {
     "Standardfall (Voreinstellung)": "Zwei Standorte mit der Korrelationszahl 0,5, 500 Wochen, Niveau 99 %: Die Wahrscheinlichkeit, dass der zweite Standort ebenfalls oben steht, wenn der erste oben steht, ist exakt 0,129 bei der Gauß-Kopula und 0,330 bei der t-Kopula mit ν = 3.",
     "Gleiche Zahl, anderer Rand": "Gleiche Korrelationszahl 0,5, Niveau 99,9 %, 2 000 Wochen: exakt 0,054 (Gauß-Kopula) gegen 0,316 (t-Kopula, ν = 3), also das 5,8-Fache. In den 2 000 Wochen stehen nur wenige Wochen oben: die exakte Kurve zeigt, was die Zählung nicht kann.",
-    "Gauß ohne Rand?": "Korrelationszahl 0,9: Der Randabhängigkeitskoeffizient der Gauß-Kopula ist 0, doch die bedingte Wahrscheinlichkeit fällt von 0,689 (Niveau 90 %) nur auf 0,305 (Niveau 99,999 %); die t-Kopula (ν = 3) bleibt bei 0,671 (λ = 0,670).",
-    "Poolen gegen Spitzen": "Korrelationszahl 0,3: Der Pooling-Gewinn beim Quantil der Summe zum Niveau 99,9 % ist bei der Gauß-Kopula 19,4 %, bei der t-Kopula mit ν = 3 nur 8,9 % (Raster, 4 · 1 000 000 Paare).",
-    "Wie viele Jahre Daten?": "Korrelationszahl 0,5, 260 Wochen (fünf Jahre), 5 % der Wochen am Rand: Der Rangschätzer erkennt die richtige Kopula in 70,6 % der Fälle (Raten wäre 50 %); exakt beim Niveau 95 % sind 0,244 und 0,366.",
+    "Gauß ohne Rand?": "Korrelationszahl 0,9: Der Randabhängigkeitskoeffizient der Gauß-Kopula ist 0, doch die bedingte Wahrscheinlichkeit fällt von 0,689 (Niveau 90 %) nur auf 0,305 (Niveau 99,999 %); die t-Kopula (ν = 3) bleibt bei 0,670 (λ = 0,670).",
+    "Poolen gegen Spitzen": "Korrelationszahl 0,3: Der Pooling-Gewinn beim Quantil der Summe zum Niveau 99,9 % ist bei der Gauß-Kopula 19,4 %, bei der t-Kopula mit ν = 3 nur etwa 9 % (Raster, 4 · 1 000 000 Paare).",
+    "Wie viele Jahre Daten?": "Korrelationszahl 0,5, 260 Wochen (fünf Jahre), 5 % der Wochen am Rand: Der Rangschätzer erkennt bei bekanntem ρ und ν die richtige der zwei Kopulas in 70,6 % der Fälle (Raten wäre 50 %); exakt beim Niveau 95 % sind 0,244 und 0,366.",
     "Fast Gauß (ν = 30)": "t-Kopula mit ν = 30: λ ist nur 0,0030, doch beim Niveau 99,9 % liegt die bedingte Wahrscheinlichkeit mit 0,081 noch um das 1,5-Fache über der Gauß-Kopula (0,054).",
 }

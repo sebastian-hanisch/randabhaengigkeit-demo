@@ -196,9 +196,9 @@ def test_claim_the_preset_help_texts_quote_exact_and_grid_numbers(grid):
     assert f"exakt {_c(g999, 3)} (Gauß-Kopula) gegen {_c(t999, 3)} (t-Kopula, ν = 3), also das {_c(t999 / g999, 1)}-Fache" in h["Gleiche Zahl, anderer Rand"]
     text = h["Gauß ohne Rand?"]
     assert f"von {_c(K.cond_exceed_gauss(0.9, 0.9), 3)} (Niveau 90 %) nur auf {_c(K.cond_exceed_gauss(0.99999, 0.9), 3)} (Niveau 99,999 %)" in text
-    assert f"bleibt bei {_c(K.cond_exceed_t(0.9999, 0.9, 3), 3)} (λ = {_c(K.lambda_t(0.9, 3), 3)})" in text
+    assert f"bleibt bei {_c(K.cond_exceed_t(0.99999, 0.9, 3), 3)} (λ = {_c(K.lambda_t(0.9, 3), 3)})" in text
     cell = ev.find(grid["sum"], rho=0.3, nu=3)
-    assert f"bei der Gauß-Kopula {_p(cell['gauss']['gain'])} %, bei der t-Kopula mit ν = 3 nur {_p(cell['t']['gain'])} %" in h["Poolen gegen Spitzen"]
+    assert f"bei der Gauß-Kopula {_p(cell['gauss']['gain'])} %, bei der t-Kopula mit ν = 3 nur etwa {round(100 * cell['t']['gain'])} %" in h["Poolen gegen Spitzen"]
     est = ev.find(grid["estimate"], n=260, share=0.05)
     assert f"in {_p(est['accuracy'])} % der Fälle" in h["Wie viele Jahre Daten?"]
     assert f"exakt beim Niveau 95 % sind {_c(K.cond_exceed_gauss(0.95, 0.5), 3)} und {_c(K.cond_exceed_t(0.95, 0.5, 3), 3)}" in h["Wie viele Jahre Daten?"]

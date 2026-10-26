@@ -83,7 +83,7 @@ def test_verdict_rank_grid_uses_the_smallest_nu_and_says_which_copula_has_the_sm
     rows = [{"rho": 0.5, "nu": 10, "tau_formula": 1 / 3, "gauss": {"pearson": 0.5, "spearman": 0.48, "kendall": 0.333}, "t": {"pearson": 0.499, "spearman": 0.478, "kendall": 0.333}},
             {"rho": 0.5, "nu": 3, "tau_formula": 1 / 3, "gauss": {"pearson": 0.5, "spearman": 0.482, "kendall": 0.332}, "t": {"pearson": 0.487, "spearman": 0.464, "kendall": 0.331}}]
     kind, text = ev.verdict_rank_grid(rows, 0.5)
-    assert kind == "info" and "ν = 3" in text and "0,487 gegen 0,500" in text and "0,464 gegen 0,482" in text and "0,331 gegen 0,332" in text and "Formel 0,333" in text and "kleinere Zahl" in text
+    assert kind == "info" and "ν = 3" in text and "0,487 gegen 0,500" in text and "0,464 gegen 0,482" in text and "0,331 gegen 0,332" in text and "Formel 0,333" in text and "Pearson und Spearman kleiner, Kendall ist gleich" in text
 
 
 def _est_rows(acc):

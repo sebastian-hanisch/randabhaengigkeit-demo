@@ -227,7 +227,7 @@ def verdict_sums(a: Analysis) -> tuple[str, str]:
     g, t = a.sums["gauss"], a.sums["t"]
     text = (f"Summe beider Standorte: Schranke {C.SUM_BOUND:g} wird bei der Gauß-Kopula mit Wahrscheinlichkeit **{_num(g['exceed'], 5)}** überschritten, bei der t-Kopula mit **{_num(t['exceed'], 5)}** "
             f"({_ratio(t['exceed'], g['exceed'])}). Das Quantil der Summe zum Niveau {_level(C.SUM_LEVELS[1])} ist {_num(g['quantiles'][1], 2)} gegen {_num(t['quantiles'][1], 2)}; "
-            f"der Pooling-Gewinn gegen getrennte Bestände sinkt von **{_pct(g['gain'])}** auf **{_pct(t['gain'])}** (t-Werte aus {_int(C.LIVE_SUM_PAIRS)} simulierten Paaren, daher mit Rauschen in der letzten Stelle).")
+            f"der Pooling-Gewinn gegen getrennte Bestände sinkt von **{_pct(g['gain'])}** auf **{_pct(t['gain'])}** (t-Werte aus {_int(C.LIVE_SUM_PAIRS)} simulierten Paaren, daher mit Rauschen von etwa ± 1 Prozentpunkt beim Pooling-Gewinn).")
     return "warning", text
 
 
@@ -265,7 +265,7 @@ def verdict_rank_grid(rows: list[dict], rho: float) -> tuple[str, str]:
     low = cells[0]
     text = (f"ρ = {_num(rho, 1)}, t-Kopula mit ν = {low['nu']}: Pearson {_num(low['t']['pearson'])} gegen {_num(low['gauss']['pearson'])} (Gauß), Spearman {_num(low['t']['spearman'])} gegen {_num(low['gauss']['spearman'])}, "
             f"Kendall {_num(low['t']['kendall'])} gegen {_num(low['gauss']['kendall'])} (Formel {_num(low['tau_formula'])}). "
-            "Die Zahlen unterscheiden sich um wenige Hundertstel; **die Kopula mit dem größeren Randrisiko hat die kleinere Zahl**.")
+            "Die Zahlen unterscheiden sich um wenige Hundertstel; **bei der Kopula mit dem größeren Randrisiko sind Pearson und Spearman kleiner, Kendall ist gleich**.")
     return "info", text
 
 

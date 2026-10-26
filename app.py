@@ -76,7 +76,7 @@ with st.container(key="kopf"):
     st.title("📈 Randabhängigkeit: gleiche Korrelation, anderes Risiko")
 st.markdown(
     """
-**Neuntes Stück der Korrelations-Reihe** und **die erste Demo des Portfolios mit einer Kopula**. Die wöchentliche Nachfrage zweier Standorte hat in zwei Welten **dieselben Ränder** (jeder Standort für sich
+**Neuntes Stück der Korrelations-Reihe** und **die erste Demo, die Kopulas als Gegenstand hat**. Die wöchentliche Nachfrage zweier Standorte hat in zwei Welten **dieselben Ränder** (jeder Standort für sich
 normalverteilt) und **dieselbe Korrelationszahl**, aber eine andere **Kopula**, das heißt eine andere Art, wie die beiden zusammenhängen. Die Frage der Stücke 1 bis 8 war, was eine Zahl über die **Mitte**
 sagt. Hier geht es um den **Rand**: Wie wahrscheinlich ist es, dass **beide** Standorte in derselben Woche eine Spitze haben, und was folgt daraus für den gemeinsamen Sicherheitsbestand?
 
@@ -181,7 +181,7 @@ st.plotly_chart(build_cond_curves(e1_curves, C.COND_NUS), width="stretch", key="
 kind, text = ev.verdict_curves(e1_curves, C.COND_NUS[0])
 getattr(st, kind)(text)
 st.caption("Die Gauß-Kurve sinkt mit dem Niveau, ohne sich schnell der 0 zu nähern: der Koeffizient λ = 0 sagt nichts über die Wahrscheinlichkeiten bei den Niveaus, die Daten überhaupt erreichen. "
-           "Die t-Kurven nähern sich ihrem λ von oben und sind schon bei 90 % deutlich höher als die Gauß-Kurve.")
+           "Die t-Kurven nähern sich ihrem λ von oben bei 90 % liegen die t-Kurven mit kleinem ν höher als die Gauß-Kurve (bis zum 1,4-Fachen), die mit ν = 30 kaum.")
 
 st.markdown("---")
 
@@ -218,7 +218,7 @@ if grid is not None:
     st.plotly_chart(build_rank_bars(cell), width="stretch", key="rank_chart")
     kind, text = ev.verdict_rank_grid(grid["rank"], e3_rho)
     getattr(st, kind)(text)
-    st.caption("Keine der drei Zahlen zeigt den Rand. Pearson und Spearman liegen bei der t-Kopula leicht niedriger, also in der falschen Richtung für die Frage, wer das größere Randrisiko hat; "
+    st.caption("Keine der drei Zahlen zeigt den Rand. Pearson und Spearman liegen bei der t-Kopula mit kleinem ν leicht niedriger, also in der falschen Richtung für die Frage, wer das größere Randrisiko hat; "
                "Kendalls τ ist bei beiden gleich, weil es nur von ρ abhängt.")
 
 st.markdown("---")
@@ -257,7 +257,7 @@ rows_md += [f"| {r['nu']} | {de(r['lambda'], 4)} | " + " | ".join(de(v) for v in
 st.markdown("\n".join(rows_md))
 kind, text = ev.verdict_nu(table)
 getattr(st, kind)(text)
-st.caption("λ geht mit wachsendem ν gegen 0, die bedingten Wahrscheinlichkeiten bei den erreichbaren Niveaus aber viel langsamer: eine t-Kopula mit ν = 30 hat ein kaum sichtbares λ und liegt bei 99,9 % doch deutlich über der Gauß-Kopula.")
+st.caption("λ geht mit wachsendem ν gegen 0, die bedingten Wahrscheinlichkeiten bei den erreichbaren Niveaus aber viel langsamer: eine t-Kopula mit ν = 30 hat ein kaum sichtbares λ und liegt bei 99,9 % und ρ = 0,5 doch um das 1,5-Fache über der Gauß-Kopula, bei ρ = 0,9 nur noch um etwa 8 %.")
 
 st.markdown("---")
 
@@ -273,7 +273,7 @@ st.markdown(
 | **ρ ist für beide Welten gleich** | das ist die Fragestellung (gleiche Zahl, anderer Rand); in der Praxis kennt man ρ nicht und schätzt es mit Fehler (Stück 1) | Stück 1 |
 | **Der Rangschätzer ist das Schätzverfahren** | er zeigt, was Daten hergeben, nicht das beste Verfahren; Maximum-Likelihood-Anpassung der Kopula und Extremwerttheorie mit Tail-Index liefern mehr, brauchen aber Modellannahmen | – |
 | **Die Wochen sind unabhängig und gleich verteilt** | Autokorrelation und Trends ändern alle Zahlen (Stück 4) | Stück 4 |
-| **Die Simulation der Summenquantile ist genau** | die t-Zahlen der Live-Ansicht stammen aus 100 000 Paaren und rauschen in der letzten Stelle; das Raster nutzt 4 · 1 000 000 | – |
+| **Die Simulation der Summenquantile ist genau** | die t-Zahlen der Live-Ansicht stammen aus 100 000 Paaren und rauschen beim Pooling-Gewinn um etwa ± 1 Prozentpunkt (bei großem ρ und ν kann die Reihenfolge von Gauß und t kippen); das Raster nutzt 4 · 1 000 000 | – |
 | **Der Pooling-Gewinn bestimmt den Bestand** | gemessen wird nur das Quantil der Summe; Lieferzeiten, Kosten und Servicegrade fehlen | `standort-bestand-demo` |
 | **Aussagen über echte Märkte** | keine: die Demo enthält weder Finanzprodukte noch Versicherungspreise | – |
 """

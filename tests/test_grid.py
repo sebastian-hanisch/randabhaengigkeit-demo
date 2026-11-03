@@ -54,7 +54,10 @@ def test_grid_meta_and_run_counts(grid):
 
 def test_the_gauss_numbers_in_the_sum_cells_are_exact(grid):
     for r in grid["sum"]:
-        assert r["gauss"] == pytest.approx(ev.gauss_sums(r["rho"]), rel=1e-12)
+        exact = ev.gauss_sums(r["rho"])
+        assert r["gauss"].keys() == exact.keys()
+        for key, value in exact.items():                       # pytest.approx kennt keine verschachtelten Dicts (pytest 9)
+            assert r["gauss"][key] == pytest.approx(value, rel=1e-12), (r["rho"], key)
 
 
 def test_the_t_copula_always_has_the_smaller_pooling_gain_and_the_larger_exceedance(grid):

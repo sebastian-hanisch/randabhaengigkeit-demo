@@ -172,7 +172,7 @@ Alle Zahlen stehen in `tests/test_claims.py` (Raster-Werte gegen die JSON-Datei,
 
 ## Bewusst nicht umgesetzt
 
-- **Weitere Kopulas** (Clayton, Gumbel, Archimedische Familien) und **Maximum-Likelihood-Anpassung der Kopula an Daten:** die Aussage „der Rand hängt an der Kopula“ trägt mit zwei Welten, mehr würde sie verwässern.
+- **Weitere Kopulas** (Clayton, Gumbel, Archimedische Familien) und **Maximum-Likelihood-Anpassung der Kopula an Daten:** die Aussage „der Rand hängt an der Kopula“ reicht mit zwei Welten, mehr würde sie verwässern.
 - **Finanzprodukte** (Kreditportfolios, Value at Risk im Handelsbuch) und **Extremwerttheorie in voller Breite** (Tail-Index, Block-Maxima): nur als Hinweis; der Hill-Schätzer für **eine** Größe steht in `potenzgesetz-test-demo`.
 - **Zeitveränderliche Kopula und Abhängigkeit über die Wochen:** Stück 4.
 
